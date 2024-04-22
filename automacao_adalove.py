@@ -12,8 +12,8 @@ hoje = datetime.datetime.now().weekday()
 hora = datetime.datetime.now().hour
 
 # Credenciais no Adalove
-email = 'emailAdalove@exemplo.com'
-senha = 'senhaAdalove'
+email = 'email_adalove'
+senha = 'senha_adalove'
 
 # Verificando se é sábado (5) ou domingo (6)
 if hoje in (5, 6):
@@ -84,7 +84,7 @@ try:
     time.sleep(7)
 
     # Clicando no icone para acessar o 'check in'
-    click_by_css_selector("ul.sc-PXPPG.jNwGee > ul > li:first-child > button")
+    click_by_css_selector("ul.sc-heNFcO.cXKcYk > ul > li:first-child > button")
 
     # Clicando no botão 'check in'
     click_by_class_name("css-1ywkuo0")
