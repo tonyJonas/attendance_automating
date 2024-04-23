@@ -31,7 +31,6 @@ def configurar_driver():
 
     return driver
 
-
 # Configurando o driver do Chrome
 driver = configurar_driver()
 
@@ -56,6 +55,13 @@ def input_by_class_name(class_name, text):
     )
     input.send_keys(text)
 
+# Função para inserir texto em um campo com base no seletor css
+def input_by_css_selector(css_selector, text):
+    input = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, css_selector))
+    )
+    input.send_keys(text)
+
 # Função para clicar em um elemento com base no nome da classe
 def click_by_class_name(class_name):
     to_click = WebDriverWait(driver, 10).until(
@@ -73,18 +79,19 @@ def click_by_css_selector(css_selector):
 
 try: 
     # Inserindo o email no campo com base no id
-    input_by_id(":r6:", email, "MuiInputBase-input.MuiOutlinedInput-input.css-1x5jdmq")
+    input_by_css_selector("input[type='text']", email)
 
     # Inserindo a senha no campo com base no id
-    input_by_id(":r7:", senha, "MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputAdornedEnd.css-1uvydh2")
+    input_by_css_selector("input[type='password']", senha)
 
     # Clicando no botão para logar.
-    click_by_class_name("MuiButton-containedPrimary")
+    click_by_css_selector("button[type='submit']")
 
+    # Esperando o login ser realizado
     time.sleep(7)
 
     # Clicando no icone para acessar o 'check in'
-    click_by_css_selector("ul.sc-heNFcO.cXKcYk > ul > li:first-child > button")
+    click_by_css_selector("ul > ul > li:first-child > button")
 
     # Clicando no botão 'check in'
     click_by_class_name("css-1ywkuo0")
